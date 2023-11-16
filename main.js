@@ -15,11 +15,25 @@ function enviarDatos() {
     } else {
       // Ocultar mensaje de alerta si todos los campos están completos
       document.getElementById('alerta').style.display = 'none';
-      var resultado1 = parseFloat(gananciaA) + parseFloat(distancia);
-      var resultado2 = parseFloat(frecuencia) * parseFloat(atenuacion);
 
-      document.getElementById('resultado1').textContent = resultado1;
-      document.getElementById('resultado2').textContent = resultado2;
+      const ptx = 10*Math.log10(señalA / 1);
+      const aA = longitudA * atenuacion;
+      const aB = longitudB * atenuacion;
+      const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
+      const resRSSI = - 80 + 10 - ptx + aA + aB - gananciaA + el;
+      //Ptx
+      document.getElementById('ptx').textContent = ` Ptx = 10 x log(10) (${señalA}mW / 1mW) = ${ptx.toFixed(3)}dBi`;
+      //Atenuacion cable A
+      document.getElementById('cableA').textContent = `Pérdida por Atenuación en A: dB A = ${longitudA}m x ${atenuacion}dB/m = ${aA.toFixed(3)}dB`;
+      //Atenuacion cable B
+      document.getElementById('cableB').textContent = `Pérdida por Atenuación en B: dB B = ${longitudB}m x ${atenuacion}dB/m = ${aB.toFixed(3)}dB`;
+      //Ganancia de antena A
+      document.getElementById('antena').textContent = `Ganancia de antena A: ${gananciaA}dB`;
+      //Atenuación en el Espacio Libre
+      document.getElementById('espacio').textContent = `Atenuación en el Espacio Libre: 92.44 + 20 log(10) (${distancia}Km) + 20 log(10) (${frecuencia}GHz) = ${el.toFixed(3)}dB`;
+      //RSSI
+      document.getElementById('rssi').textContent = `Ganancia RSSI: -80dB + 10dB = ${ptx}dB - ${aA}dB - ${aB}dB + ${gananciaA}dB - ${el}dB + RSSI = ${resRSSI.toFixed(3)}dB`;
+
       document.getElementById('resultados').style.display = 'block';
 
       // También puedes reiniciar el formulario después de enviar los datos si es necesario
