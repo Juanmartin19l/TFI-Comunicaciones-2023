@@ -22,7 +22,7 @@ function enviarDatos() {
       const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
       const resRSSI = - 80 + 10 - ptx + aA + aB - gananciaA + el;
       //Ptx
-      document.getElementById('ptx').textContent = ` Ptx = 10 x log(10) (${señalA}mW / 1mW) = ${ptx.toFixed(3)}dBi`;
+      document.getElementById('ptx').textContent = `Ganancia de la señal del trasmisor 10 x log(10) (${señalA}mW / 1mW) = ${ptx.toFixed(3)}dB`;
       //Atenuacion cable A
       document.getElementById('cableA').textContent = `Pérdida por Atenuación en A: dB A = ${longitudA}m x ${atenuacion}dB/m = ${aA.toFixed(3)}dB`;
       //Atenuacion cable B
@@ -32,7 +32,7 @@ function enviarDatos() {
       //Atenuación en el Espacio Libre
       document.getElementById('espacio').textContent = `Atenuación en el Espacio Libre: 92.44 + 20 log(10) (${distancia}Km) + 20 log(10) (${frecuencia}GHz) = ${el.toFixed(3)}dB`;
       //RSSI
-      document.getElementById('rssi').textContent = `Ganancia RSSI: -80dB + 10dB = ${ptx}dB - ${aA}dB - ${aB}dB + ${gananciaA}dB - ${el}dB + RSSI = ${resRSSI.toFixed(3)}dB`;
+      document.getElementById('rssi').textContent = `Ganancia RSSI: ${resRSSI.toFixed(3)}dB`;
 
       document.getElementById('resultados').style.display = 'block';
 
