@@ -21,18 +21,22 @@ function enviarDatos() {
       const aB = longitudB * atenuacion;
       const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
       const resRSSI = - 80 + 10 - ptx + aA + aB - gananciaA + el;
+
+      document.getElementById('ptx').innerHTML = `<td>Suma: ${gananciaA} + ${distancia}</td><td>${ptx}</td>`;
+
+
       //Ptx
-      document.getElementById('ptx').textContent = `Ganancia de la señal del trasmisor 10 x log(10) (${señalA}mW / 1mW) = ${ptx.toFixed(3)}dB`;
+      document.getElementById('ptx').innerHTML = `<td>Ganancia de la señal del trasmisor</td><td>${ptx.toFixed(3)} dB</td>`;
       //Atenuacion cable A
-      document.getElementById('cableA').textContent = `Pérdida por Atenuación en A: dB A = ${longitudA}m x ${atenuacion}dB/m = ${aA.toFixed(3)}dB`;
+      document.getElementById('cableA').innerHTML = `<td>Pérdida por Atenuación en A</td><td>${aA.toFixed(3)} dB</td>`;
       //Atenuacion cable B
-      document.getElementById('cableB').textContent = `Pérdida por Atenuación en B: dB B = ${longitudB}m x ${atenuacion}dB/m = ${aB.toFixed(3)}dB`;
+      document.getElementById('cableB').innerHTML = `<td>Pérdida por Atenuación en B</td><td>${aB.toFixed(3)} dB</td>`;
       //Ganancia de antena A
-      document.getElementById('antena').textContent = `Ganancia de antena A: ${gananciaA}dB`;
+      document.getElementById('antena').innerHTML = `<td>Ganancia de antena A</td><td>${gananciaA} dB</td>`;
       //Atenuación en el Espacio Libre
-      document.getElementById('espacio').textContent = `Atenuación en el Espacio Libre: 92.44 + 20 log(10) (${distancia}Km) + 20 log(10) (${frecuencia}GHz) = ${el.toFixed(3)}dB`;
+      document.getElementById('espacio').innerHTML = `<td>Atenuación en el Espacio Libre</td><td>${el.toFixed(3)} dB</td>`;
       //RSSI
-      document.getElementById('rssi').textContent = `Ganancia RSSI: ${resRSSI.toFixed(3)}dB`;
+      document.getElementById('rssi').innerHTML = `<td>Ganancia RSSI</td><td>${resRSSI.toFixed(3)} dB</td>`;
 
       document.getElementById('resultados').style.display = 'block';
 
