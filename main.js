@@ -40,7 +40,6 @@ function enviarDatos() {
       //RSSI
       document.getElementById('rssi').innerHTML = `<td>Ganancia RSSI</td><td>${resRSSI.toFixed(3)} dB</td>`;
 
-      document.getElementById('resultados').style.display = 'block';
 
       // También puedes reiniciar el formulario después de enviar los datos si es necesario
       // document.getElementById('miFormulario').reset();
