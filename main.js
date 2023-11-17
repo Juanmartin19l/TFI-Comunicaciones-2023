@@ -7,8 +7,10 @@ function enviarDatos() {
     var longitudA = document.getElementById('longitudA').value;
     var longitudB = document.getElementById('longitudB').value;
     var señalA = document.getElementById('señalA').value;
+    var sensibilidad = document.getElementById('sensibilidad').value;
+    var margen = document.getElementById('margen').value;
 
-    if (gananciaA === '' || distancia === '' || frecuencia === '' || atenuacion === '' || longitudA === '' || longitudB === '' || señalA === '' || isNaN(parseFloat(gananciaA))  || isNaN(parseFloat(distancia)) || isNaN(parseFloat(frecuencia)) || isNaN(parseFloat(atenuacion)) || isNaN(parseFloat(longitudA)) || isNaN(parseFloat(longitudB)) || isNaN(parseFloat(señalA))) {
+    if (gananciaA === '' || distancia === '' || frecuencia === '' || atenuacion === '' || longitudA === '' || longitudB === '' || señalA === '' || sensibilidad === '' || margen === ''||isNaN(parseFloat(gananciaA))  || isNaN(parseFloat(distancia)) || isNaN(parseFloat(frecuencia)) || isNaN(parseFloat(atenuacion)) || isNaN(parseFloat(longitudA)) || isNaN(parseFloat(longitudB)) || isNaN(parseFloat(señalA)) || isNaN(parseFloat(sensibilidad)) || isNaN(parseFloat(margen))) {
       // Mostrar mensaje de alerta
       document.getElementById('alerta').style.display = 'block';
       document.getElementById('resultados').style.display = 'none';
@@ -20,7 +22,7 @@ function enviarDatos() {
       const aA = longitudA * atenuacion;
       const aB = longitudB * atenuacion;
       const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
-      const resRSSI = - 80 + 10 - ptx + aA + aB - gananciaA + el;
+      const resRSSI = parseFloat(sensibilidad) + parseFloat(margen) -ptx + aA + aB - gananciaA + el;
 
       document.getElementById('ptx').innerHTML = `<td>Suma: ${gananciaA} + ${distancia}</td><td>${ptx}</td>`;
 
