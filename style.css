@@ -1,0 +1,6 @@
+#imagen{
+    max-width: 75%; /* Puedes ajustar el porcentaje según tus necesidades */
+    height: auto;
+    display: block; /* Para evitar márgenes en la parte inferior de la imagen */
+    margin: 0 auto; /* Para centrar horizontalmente la imagen */
+}
