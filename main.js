@@ -1,3 +1,35 @@
+// Ejemplo de lista de antenas
+const listaDeAntenas = [
+  { nombre: 'Antena1', parametro1: 'valor1', parametro2: 'valorA' },
+  { nombre: 'Antena2', parametro1: 'valor2', parametro2: 'valorB' },
+  { nombre: 'Antena3', parametro1: 'valor1', parametro2: 'valorA' },
+  // ... más antenas
+];
+
+// Función para seleccionar antenas
+function seleccionarAntenas(parametro1, parametro2) {
+  // Usa Array.filter() para buscar todas las antenas que coinciden con los parámetros
+  const antenasCoincidentes = listaDeAntenas.filter(antena => 
+    antena.parametro1 === parametro1 && antena.parametro2 === parametro2
+  );
+
+  // Devuelve el array de antenas coincidentes
+  return antenasCoincidentes;
+}
+
+// Ejemplo de uso
+const antenasElegidas = seleccionarAntenas('valor1', 'valorA');
+
+// Verificar el resultado
+if (antenasElegidas.length > 0) {
+  const nombresAntenas = antenasElegidas.map(antena => antena.nombre).join(', ');
+  console.log('Las antenas que se pueden usar son: ' + nombresAntenas);
+} else {
+  console.log('No se encontraron antenas con esos parámetros.');
+}
+
+
+
 function enviarDatos() {
     // Verificar si todos los campos están completos
     var gananciaA = document.getElementById('gananciaA').value;
@@ -24,24 +56,19 @@ function enviarDatos() {
       const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
       const resRSSI = parseFloat(sensibilidad) + parseFloat(margen) -ptx + aA + aB - gananciaA + el;
 
-      document.getElementById('ptx').innerHTML = `<td>Suma: ${gananciaA} + ${distancia}</td><td>${ptx}</td>`;
-
-
       //Ptx
-      document.getElementById('ptx').innerHTML = `<td>Ganancia de la señal del trasmisor</td><td>${ptx.toFixed(3)} dB</td>`;
+      document.getElementById('ptx').innerHTML = `${ptx.toFixed(3)} dB`;
       //Atenuacion cable A
-      document.getElementById('cableA').innerHTML = `<td>Pérdida por Atenuación en A</td><td>${aA.toFixed(3)} dB</td>`;
+      document.getElementById('cableA').innerHTML = `${aA.toFixed(3)} dB`;
       //Atenuacion cable B
-      document.getElementById('cableB').innerHTML = `<td>Pérdida por Atenuación en B</td><td>${aB.toFixed(3)} dB</td>`;
+      document.getElementById('cableB').innerHTML = `${aB.toFixed(3)} dB`;
       //Ganancia de antena A
-      document.getElementById('antena').innerHTML = `<td>Ganancia de antena A</td><td>${gananciaA} dB</td>`;
+      document.getElementById('antena').innerHTML = `${gananciaA} dB`;
       //Atenuación en el Espacio Libre
-      document.getElementById('espacio').innerHTML = `<td>Atenuación en el Espacio Libre</td><td>${el.toFixed(3)} dB</td>`;
+      document.getElementById('espacio').innerHTML = `${el.toFixed(3)} dB`;
       //RSSI
-      document.getElementById('rssi').innerHTML = `<td>Ganancia RSSI</td><td>${resRSSI.toFixed(3)} dB</td>`;
+      document.getElementById('rssi').innerHTML = `${resRSSI.toFixed(3)} dB`;
 
-
-      // También puedes reiniciar el formulario después de enviar los datos si es necesario
-      // document.getElementById('miFormulario').reset();
+      
     }
   }

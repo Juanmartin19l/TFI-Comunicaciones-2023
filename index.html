@@ -42,7 +42,9 @@
     </header>
     <main>
       <div class="container mt-1">
-        <h1 class="text-md-center text-sm-start">Proyecto Final Comunicaciones</h1>
+        <h1 class="text-md-center text-sm-start">
+          Proyecto Final Comunicaciones
+        </h1>
 
         <p class="fs-3">
           Calculadora de potencia en dB de la antena B. Considerando una antena
@@ -70,7 +72,7 @@
                   required
                 />
               </div>
-    
+
               <!-- distancia -->
               <div class="form-group">
                 <label for="distancia">Distancia entre las antenas:</label>
@@ -82,7 +84,7 @@
                   required
                 />
               </div>
-    
+
               <!-- frecuencia -->
               <div class="form-group">
                 <label for="frecuencia">Frecuencia de operacion:</label>
@@ -94,7 +96,7 @@
                   required
                 />
               </div>
-    
+
               <!-- atenuacion -->
               <div class="form-group">
                 <label for="atenuacion">Atenuación por cable:</label>
@@ -106,7 +108,7 @@
                   required
                 />
               </div>
-    
+
               <!-- longitudA -->
               <div class="form-group">
                 <label for="longitudA">Longitud cable A:</label>
@@ -118,7 +120,7 @@
                   required
                 />
               </div>
-    
+
               <!-- longitudB -->
               <div class="form-group">
                 <label for="longitudB">Longitud cable B:</label>
@@ -130,7 +132,7 @@
                   required
                 />
               </div>
-    
+
               <!-- señalA -->
               <div class="form-group">
                 <label for="señalA">Señal del trasmisor A:</label>
@@ -142,7 +144,7 @@
                   required
                 />
               </div>
-    
+
               <!-- Sensibilidad del receptor -->
               <div class="form-group">
                 <label for="sensibilidad">Sensibilidad del receptor:</label>
@@ -154,7 +156,7 @@
                   required
                 />
               </div>
-    
+
               <!-- Margen de recuperancion -->
               <div class="form-group">
                 <label for="margen">Margen de recuperancion:</label>
@@ -166,7 +168,7 @@
                   required
                 />
               </div>
-    
+
               <!-- Botón de envío -->
               <button
                 type="button"
@@ -175,7 +177,7 @@
               >
                 Enviar Datos
               </button>
-    
+
               <!-- Mensaje de alerta (inicialmente oculto) -->
               <div
                 class="alert alert-danger mt-3"
@@ -188,29 +190,34 @@
           </div>
           <div class="col-md-6">
             <!--Resultados-->
-          <div class="mt-3" id="resultados">
-            <h4>Desarrollo</h4>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Descripción</th>
-                  <th>Resultado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="ptx"></tr>
-                <tr id="cableA"></tr>
-                <tr id="cableB"></tr>
-                <tr id="antena"></tr>
-                <tr id="espacio"></tr>
-                <tr id="rssi"></tr>
-                <tr id="tipoAntena"></tr>
-              </tbody>
-            </table>
-          </div>
+            <div class="mt-3" id="resultados">
+              <h4>Desarrollo</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Descripción</th>
+                    <th class="text-center">Resultado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ganancia de la señal del trasmisor</td>
+                    <td id="ptx" class="text-center">-</td>
+                  </tr>
+                  <tr>
+                    <td>Pérdida por Atenuación en A</td>
+                    <td id="cableA" class="text-center">-</td>
+                  </tr>
+                  <tr ><td>Pérdida por Atenuación en B</td><td id="cableB" class="text-center">-</td></tr>
+                  <tr ><td>Ganancia de antena A</td><td id="antena" class="text-center">-</td></tr>
+                  <tr ><td>Atenuación en el Espacio Libre</td><td id="espacio" class="text-center">-</td></tr>
+                  <tr ><td>Ganancia RSSI</td><td id="rssi" class="text-center">-</td></tr>
+                  <tr id="tipoAntena"></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-
       </div>
     </main>
     <footer class="bg-dark text-light py-3 mt-5">
