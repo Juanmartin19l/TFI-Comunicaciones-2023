@@ -178,7 +178,7 @@ function enviarDatos() {
       const contenidoAntenas = antenasElegidas
         .map(
           (antena) =>
-            `<p>${antena.nombre} <img src="${antena.imagen}" alt="${antena.nombre}, " style="max-width: 100px;"></p>`
+            `<tr><td>${antena.nombre}</td><td class="text-center"><img src="${antena.imagen}" alt="${antena.nombre}, " style="max-width: 100px;"></td></tr>`
         )
         .join("");
 

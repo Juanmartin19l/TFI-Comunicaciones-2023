@@ -8,7 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- Bootstrap CSS v5.2.1 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -41,13 +41,15 @@
       </nav>
     </header>
     <main>
-      <div class="container mt-2">
+      <div class="container pt-3">
         <h1 class="text-md-center text-sm-start">
           Proyecto Final Comunicaciones
         </h1>
 
         <p class="fs-3">
-          Calculadora de potencia en dB de la antena B(RSSI) y recomienda una antena de la matriz Aruba que sea compatible. Considerando una antena isotrópica de 1mW.
+          Calculadora de indicador de fuerza de la señal recibida de la antena B(RSSI) y recomienda una
+          antena de la matriz Aruba que sea compatible. Considerando una antena
+          isotrópica de 1mW.
         </p>
 
         <img
@@ -56,10 +58,47 @@
           id="imagen"
           alt="Imagen del proyecto"
         />
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row mt-3">
+          <div class="col-md-4">
             <h4>Datos</h4>
-            <!--Formulario-->
+            <form>
+              <!-- distancia -->
+              <div class="form-group">
+                <label for="distancia">Distancia entre las antenas:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="distancia"
+                  placeholder="[Km]"
+                  required
+                />
+              <!-- frecuencia -->
+              <div class="form-group">
+                <label for="frecuencia">Frecuencia de operacion:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="frecuencia"
+                  placeholder="[GHz]"
+                  required
+                />
+              <!-- atenuacion -->
+              <div class="form-group">
+                <label for="atenuacion">Atenuación por cable A y B:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="atenuacion"
+                  placeholder="[dB/m]"
+                  required
+                />
+              </div>
+              </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <h4>Datos A</h4>
             <form>
               <!-- gananciaA -->
               <div class="form-group">
@@ -72,43 +111,6 @@
                   required
                 />
               </div>
-
-              <!-- distancia -->
-              <div class="form-group">
-                <label for="distancia">Distancia entre las antenas:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="distancia"
-                  placeholder="[Km]"
-                  required
-                />
-              </div>
-
-              <!-- frecuencia -->
-              <div class="form-group">
-                <label for="frecuencia">Frecuencia de operacion:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="frecuencia"
-                  placeholder="[GHz]"
-                  required
-                />
-              </div>
-
-              <!-- atenuacion -->
-              <div class="form-group">
-                <label for="atenuacion">Atenuación por cable:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="atenuacion"
-                  placeholder="[dB/m]"
-                  required
-                />
-              </div>
-
               <!-- longitudA -->
               <div class="form-group">
                 <label for="longitudA">Longitud cable A:</label>
@@ -116,18 +118,6 @@
                   type="text"
                   class="form-control"
                   id="longitudA"
-                  placeholder="[m]"
-                  required
-                />
-              </div>
-
-              <!-- longitudB -->
-              <div class="form-group">
-                <label for="longitudB">Longitud cable B:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="longitudB"
                   placeholder="[m]"
                   required
                 />
@@ -145,6 +135,22 @@
                 />
               </div>
 
+            </form>
+          </div>
+          <div class="col-md-4">
+            <h4>Datos B</h4>
+            <form>
+              <!-- longitudB -->
+              <div class="form-group">
+                <label for="longitudB">Longitud cable B:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="longitudB"
+                  placeholder="[m]"
+                  required
+                />
+              </div>
               <!-- Sensibilidad del receptor -->
               <div class="form-group">
                 <label for="sensibilidad">Sensibilidad del receptor:</label>
@@ -156,10 +162,9 @@
                   required
                 />
               </div>
-
               <!-- Margen de recuperancion -->
               <div class="form-group">
-                <label for="margen">Margen de recuperancion:</label>
+                <label for="margen">Margen de recepción:</label>
                 <input
                   type="text"
                   class="form-control"
@@ -168,31 +173,28 @@
                   required
                 />
               </div>
-
-              <!-- Botón de envío -->
-              <button
-                type="button"
-                class="btn btn-primary mt-2"
-                onclick="enviarDatos()"
-              >
-                Enviar Datos
-              </button>
-
-              <!-- Mensaje de alerta (inicialmente oculto) -->
-              <div
-                class="alert alert-danger mt-3"
-                id="alerta"
-                style="display: none"
-              >
-                Por favor, complete todos los campos con números decimales.
-              </div>
             </form>
           </div>
+          <!-- Botón de envío -->
+          <button
+          type="button"
+          class="btn btn-primary mt-2"
+          onclick="enviarDatos()"
+        >
+          Enviar Datos
+        </button>
+        <!-- Mensaje de alerta (inicialmente oculto) -->
+        <div
+          class="alert alert-danger mt-3"
+          id="alerta"
+          style="display: none"
+        >Por favor, complete todos los campos con números decimales.
+        </div>
           <div class="col-md-6">
             <!--Resultados-->
             <div class="mt-3" id="resultados">
               <h4>Desarrollo</h4>
-              <table class="table">
+              <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th>Descripción</th>
@@ -224,13 +226,22 @@
                     <td class="fw-bold">Ganancia RSSI</td>
                     <td id="rssi" class="text-center fw-bold">-</td>
                   </tr>
-                  <tr>
-                    <td class="fw-bold">Antenas</td>
-                    <td id="tipoAntena" class="text-center fw-bold">-</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <h4>Antenas</h4>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th class="text-center">Imagen</th>
+                </tr>
+              </thead>
+              <tbody id="tipoAntena">
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
