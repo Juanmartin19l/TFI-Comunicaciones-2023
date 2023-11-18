@@ -101,28 +101,55 @@ function enviarDatos() {
   document.getElementById("rssi").innerHTML = "-";
   document.getElementById("tipoAntena").innerHTML = "-";
 
+  // Obtener los valores de los campos y reemplazar comas por puntos
+  var gananciaA = document
+    .getElementById("gananciaA")
+    .value.trim()
+    .replace(",", ".");
+  var distancia = document
+    .getElementById("distancia")
+    .value.trim()
+    .replace(",", ".");
+  var frecuencia = document
+    .getElementById("frecuencia")
+    .value.trim()
+    .replace(",", ".");
+  var atenuacion = document
+    .getElementById("atenuacion")
+    .value.trim()
+    .replace(",", ".");
+  var longitudA = document
+    .getElementById("longitudA")
+    .value.trim()
+    .replace(",", ".");
+  var longitudB = document
+    .getElementById("longitudB")
+    .value.trim()
+    .replace(",", ".");
+  var señalA = document.getElementById("señalA").value.trim().replace(",", ".");
+  var sensibilidad = document
+    .getElementById("sensibilidad")
+    .value.trim()
+    .replace(",", ".");
+  var margen = document.getElementById("margen").value.trim().replace(",", ".");
 
-  // Obtener los valores de los campos
-  var gananciaA = document.getElementById('gananciaA').value.trim();
-  var distancia = document.getElementById('distancia').value.trim();
-  var frecuencia = document.getElementById('frecuencia').value.trim();
-  var atenuacion = document.getElementById('atenuacion').value.trim();
-  var longitudA = document.getElementById('longitudA').value.trim();
-  var longitudB = document.getElementById('longitudB').value.trim();
-  var señalA = document.getElementById('señalA').value.trim();
-  var sensibilidad = document.getElementById('sensibilidad').value.trim();
-  var margen = document.getElementById('margen').value.trim();
-
-  // Expresión regular para permitir solo números, punto y coma
-  var regex = /^[0-9.,]+$/;
+  // Expresión regular para permitir solo números, punto y coma, con máximo un punto
+  var regex = /^-?[0-9]+(\.[0-9]+)?$/;
 
   // Verificar si algún campo contiene caracteres no permitidos
-  if (!regex.test(gananciaA) || !regex.test(distancia) || !regex.test(frecuencia) || !regex.test(atenuacion) ||
-      !regex.test(longitudA) || !regex.test(longitudB) || !regex.test(señalA) || !regex.test(sensibilidad) || !regex.test(margen)) {
+  if (
+    !regex.test(gananciaA) ||
+    !regex.test(distancia) ||
+    !regex.test(frecuencia) ||
+    !regex.test(atenuacion) ||
+    !regex.test(longitudA) ||
+    !regex.test(longitudB) ||
+    !regex.test(señalA) ||
+    !regex.test(sensibilidad) ||
+    !regex.test(margen)
+  ) {
     // Mostrar mensaje de alerta si algún campo contiene caracteres no permitidos
-    document.getElementById('alerta').style.display = 'block';
-
-
+    document.getElementById("alerta").style.display = "block";
   } else {
     // Ocultar mensaje de alerta si todos los campos están completos
     document.getElementById("alerta").style.display = "none";
@@ -131,14 +158,7 @@ function enviarDatos() {
     const aA = longitudA * atenuacion;
     const aB = longitudB * atenuacion;
     const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
-    const resRSSI =
-      parseFloat(sensibilidad) +
-      parseFloat(margen) -
-      ptx +
-      aA +
-      aB -
-      gananciaA +
-      el;
+    const resRSSI = parseFloat(sensibilidad) + parseFloat(margen) - ptx + aA + aB - gananciaA + el;
     const antenasElegidas = seleccionarAntenas(frecuencia, resRSSI);
 
     //Ptx
