@@ -1,9 +1,20 @@
-// Ejemplo de lista de antenas
+// Lista de antenas
 const listaDeAntenas = [
-  { nombre: 'Antena1', bandaBaja: 5, bandaAlta: 6, peakGain: 18 },
-  { nombre: 'Antena2', bandaBaja: 2, bandaAlta: 3, peakGain: 18 },
-  { nombre: 'Antena3', bandaBaja: 700, bandaAlta: 1100, peakGain: 4 },
-  // ... más antenas
+  //1 hoja
+  { nombre: 'ANT-2X2-2714', bandaBaja: 2.400, bandaAlta:  2.483, peakGain: 14, imagen: './img/Antenas/ANT-2X2-2714.jpg'},
+  { nombre: 'ANT-2X2-5010', bandaBaja: 5.150, bandaAlta: 5.875, peakGain: 10, imagen: './img/Antenas/ANT-2X2-5010.jpg'},
+  { nombre: 'ANT-2X2-5314', bandaBaja: 4.900, bandaAlta: 5.875, peakGain: 14, imagen: './img/Antenas/ANT-2X2-5314.gif'},
+  //2 hoja
+  { nombre: 'ANT-2X2-5005', bandaBaja: 5.150, bandaAlta: 5.875, peakGain: 5, imagen: './img/Antenas/ANT-2X2-5005.jpg'},
+  { nombre: 'ANT-2X2-2314', bandaBaja: 2.400, bandaAlta: 2.500, peakGain: 14, imagen: './img/Antenas/ANT-2X2-2314.gif'},
+  { nombre: 'ANT-2X2-2005', bandaBaja: 2.400, bandaAlta: 2.500, peakGain: 5, imagen: './img/Antenas/ANT-2X2-2005.jpg'},
+  //3 hoja
+  { nombre: 'ANT-3X3-5712', bandaBaja: 4.900, bandaAlta: 6.000, peakGain: 11.5, imagen: './img/Antenas/ANT-3X3-5712.jpg'},
+  { nombre: 'ANT-3X3-5010', bandaBaja: 4.9, bandaAlta: 5.875, peakGain: 10, imagen: './img/Antenas/ANT-3X3-5010.jpg'},
+  //hoja 4
+  { nombre: 'ANT-3X3-5005', bandaBaja: 4.9, bandaAlta: 5.875, peakGain: 5, imagen: './img/Antenas/ANT-3X3-5005.jpg'},
+  { nombre: 'ANT-3X3-2005', bandaBaja: 2.4, bandaAlta: 2.5, peakGain: 5, imagen: './img/Antenas/ANT-3X3-2005.jpg'},
+//{ nombre: '', bandaBaja: , bandaAlta: , peakGain: },
 ];
 
 // Función para seleccionar antenas
@@ -19,21 +30,31 @@ function seleccionarAntenas(banda, peakGainA) {
 
 
 function enviarDatos() {
-    // Verificar si todos los campos están completos
-    var gananciaA = document.getElementById('gananciaA').value;
-    var distancia = document.getElementById('distancia').value;
-    var frecuencia = document.getElementById('frecuencia').value;
-    var atenuacion = document.getElementById('atenuacion').value;
-    var longitudA = document.getElementById('longitudA').value;
-    var longitudB = document.getElementById('longitudB').value;
-    var señalA = document.getElementById('señalA').value;
-    var sensibilidad = document.getElementById('sensibilidad').value;
-    var margen = document.getElementById('margen').value;
+      // Limpiar resultados anteriores
+      document.getElementById('ptx').innerHTML = '-';
+      document.getElementById('cableA').innerHTML = '-';
+      document.getElementById('cableB').innerHTML = '-';
+      document.getElementById('antena').innerHTML = '-';
+      document.getElementById('espacio').innerHTML = '-';
+      document.getElementById('rssi').innerHTML = '-';
+      document.getElementById('tipoAntena').innerHTML = '-';  
 
-    if (gananciaA === '' || distancia === '' || frecuencia === '' || atenuacion === '' || longitudA === '' || longitudB === '' || señalA === '' || sensibilidad === '' || margen === ''||isNaN(parseFloat(gananciaA))  || isNaN(parseFloat(distancia)) || isNaN(parseFloat(frecuencia)) || isNaN(parseFloat(atenuacion)) || isNaN(parseFloat(longitudA)) || isNaN(parseFloat(longitudB)) || isNaN(parseFloat(señalA)) || isNaN(parseFloat(sensibilidad)) || isNaN(parseFloat(margen))) {
-      // Mostrar mensaje de alerta
-      document.getElementById('alerta').style.display = 'block';
-      document.getElementById('resultados').style.display = 'none';
+    // Verificar si todos los campos están completos
+    var gananciaA = parseFloat(document.getElementById('gananciaA').value.replace(',', '.'));
+    var distancia = parseFloat(document.getElementById('distancia').value.replace(',', '.'));
+    var frecuencia = parseFloat(document.getElementById('frecuencia').value.replace(',', '.'));
+    var atenuacion = parseFloat(document.getElementById('atenuacion').value.replace(',', '.'));
+    var longitudA = parseFloat(document.getElementById('longitudA').value.replace(',', '.'));
+    var longitudB = parseFloat(document.getElementById('longitudB').value.replace(',', '.'));
+    var señalA = parseFloat(document.getElementById('señalA').value.replace(',', '.'));
+    var sensibilidad = parseFloat(document.getElementById('sensibilidad').value.replace(',', '.'));
+    var margen = parseFloat(document.getElementById('margen').value.replace(',', '.'));
+  
+
+    if (isNaN(gananciaA) || isNaN(distancia) || isNaN(frecuencia) || isNaN(atenuacion) || isNaN(longitudA) || isNaN(longitudB) || isNaN(señalA) || isNaN(sensibilidad) || isNaN(margen)) {
+      // Mostrar mensaje de alerta si algún campo no es un número flotante
+      document.getElementById('alerta').style.display = 'block';  
+
     } else {
       // Ocultar mensaje de alerta si todos los campos están completos
       document.getElementById('alerta').style.display = 'none';
@@ -60,12 +81,14 @@ function enviarDatos() {
       document.getElementById('rssi').innerHTML = `${resRSSI.toFixed(3)} dB`;
       //Antena
       if (antenasElegidas.length > 0) {
-        const nombresAntenas = antenasElegidas.map(antena => antena.nombre).join(', ');
-        document.getElementById('tipoAntena').innerHTML =`Las antenas que cumplen con las condiciones son: ${nombresAntenas}`;
+        const contenidoAntenas = antenasElegidas.map(antena => 
+          `<p>${antena.nombre} <img src="${antena.imagen}" alt="${antena.nombre}, " style="max-width: 100px;"></p>`
+        ).join('');
+      
+        document.getElementById('tipoAntena').innerHTML = contenidoAntenas;
+      
       } else {
         document.getElementById('tipoAntena').innerHTML = `No se encontraron antenas que cumplan con las condiciones.`;
       }
-      
-      
     }
   }
