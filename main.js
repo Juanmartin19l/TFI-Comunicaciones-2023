@@ -161,18 +161,18 @@ function enviarDatos() {
     const resRSSI = parseFloat(sensibilidad) + parseFloat(margen) - ptx + aA + aB - gananciaA + el;
     const antenasElegidas = seleccionarAntenas(frecuencia, resRSSI);
 
-    //Ptx
-    document.getElementById("ptx").innerHTML = `${ptx.toFixed(3)} dB`;
-    //Atenuacion cable A
+    //Ptx dBm
+    document.getElementById("ptx").innerHTML = `${ptx.toFixed(3)} dBm`;
+    //Atenuacion cable A dB
     document.getElementById("cableA").innerHTML = `${aA.toFixed(3)} dB`;
-    //Atenuacion cable B
+    //Atenuacion cable B dB
     document.getElementById("cableB").innerHTML = `${aB.toFixed(3)} dB`;
-    //Ganancia de antena A
-    document.getElementById("antena").innerHTML = `${gananciaA} dB`;
-    //Atenuación en el Espacio Libre
+    //Ganancia de antena A dBi
+    document.getElementById("antena").innerHTML = `${gananciaA} dBi`;
+    //Atenuación en el Espacio Libre dB
     document.getElementById("espacio").innerHTML = `${el.toFixed(3)} dB`;
-    //RSSI
-    document.getElementById("rssi").innerHTML = `${resRSSI.toFixed(3)} dB`;
+    //RSSI dBm
+    document.getElementById("rssi").innerHTML = `${resRSSI.toFixed(3)} dBm`;
     //Antena
     if (antenasElegidas.length > 0) {
       const contenidoAntenas = antenasElegidas
