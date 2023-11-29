@@ -93,13 +93,13 @@ function seleccionarAntenas(banda, peakGainA) {
 
 function enviarDatos() {
   // Limpiar resultados anteriores
-  document.getElementById("ptx").innerHTML = "-";
-  document.getElementById("cableA").innerHTML = "-";
-  document.getElementById("cableB").innerHTML = "-";
-  document.getElementById("antena").innerHTML = "-";
-  document.getElementById("espacio").innerHTML = "-";
-  document.getElementById("rssi").innerHTML = "-";
-  document.getElementById("tipoAntena").innerHTML = "-";
+  document.getElementById("ptx").innerHTML = "dBm";
+  document.getElementById("cableA").innerHTML = "dB";
+  document.getElementById("cableB").innerHTML = "dB";
+  document.getElementById("antena").innerHTML = "dBi";
+  document.getElementById("espacio").innerHTML = "dB";
+  document.getElementById("antenaB").innerHTML = "dBi";
+  document.getElementById("tipoAntena").innerHTML = "";
 
   // Obtener los valores de los campos y reemplazar comas por puntos
   var gananciaA = document
@@ -158,8 +158,8 @@ function enviarDatos() {
     const aA = longitudA * atenuacion;
     const aB = longitudB * atenuacion;
     const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
-    const resRSSI = parseFloat(sensibilidad) + parseFloat(margen) - ptx + aA + aB - gananciaA + el;
-    const antenasElegidas = seleccionarAntenas(frecuencia, resRSSI);
+    const resantenaB = parseFloat(sensibilidad) + parseFloat(margen) - ptx + aA + aB - gananciaA + el;
+    const antenasElegidas = seleccionarAntenas(frecuencia, resantenaB);
 
     //Ptx dBm
     document.getElementById("ptx").innerHTML = `${ptx.toFixed(3)} dBm`;
@@ -171,8 +171,8 @@ function enviarDatos() {
     document.getElementById("antena").innerHTML = `${gananciaA} dBi`;
     //Atenuación en el Espacio Libre dB
     document.getElementById("espacio").innerHTML = `${el.toFixed(3)} dB`;
-    //RSSI dBm
-    document.getElementById("rssi").innerHTML = `${resRSSI.toFixed(3)} dBm`;
+    //antenaB dBm
+    document.getElementById("antenaB").innerHTML = `${resantenaB.toFixed(3)} dBi`;
     //Antena
     if (antenasElegidas.length > 0) {
       const contenidoAntenas = antenasElegidas

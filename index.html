@@ -35,7 +35,9 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="temperatura.html">Receptor bajo temperatura</a>
+            <a class="nav-link" href="temperatura.html"
+              >Receptor bajo temperatura</a
+            >
           </li>
         </ul>
       </nav>
@@ -43,13 +45,17 @@
     <main>
       <div class="container pt-3">
         <h1 class="text-md-center text-sm-start">
-          Calculadora de Ganancia en dBi para la Antena del Lado B y Recomendación de Antena Compatible de la Matriz Aruba
+          Calculadora de Ganancia en dBi para la Antena del Lado B y
+          Recomendación de Antena Compatible de la Matriz Aruba
         </h1>
 
         <p class="fs-5 text-justify pt-4">
-          Considerando una antena isotrópica de 1mW, se procederá al cálculo de la ganancia en decibelios (dBi) para la antena del lado B. La ganancia en dBi es un parámetro esencial para evaluar la eficiencia de la antena en la transmisión y recepción de señales.
-
-          Una vez obtenida la ganancia en dBi, se realizará una recomendación de antena compatible de la matriz Aruba que cumpla con los requisitos y especificaciones pertinentes.
+          Considerando una antena isotrópica de 1mW, se procederá al cálculo de
+          la ganancia en decibelios (dBi) para la antena del lado B. La ganancia
+          en dBi es un parámetro esencial para evaluar la eficiencia de la
+          antena en la transmisión y recepción de señales. Una vez obtenida la
+          ganancia en dBi, se realizará una recomendación de antena compatible
+          de la matriz Aruba que cumpla con los requisitos y especificaciones.
         </p>
 
         <img
@@ -80,8 +86,6 @@
                   <option value="2.4">2.4 GHz</option>
                   <option value="5.8">5.8 GHz</option>
                 </select>
-                        
-          
               </div>
               <!-- atenuacion -->
               <div class="form-group">
@@ -99,17 +103,6 @@
           <div class="col-md-4">
             <h4>Datos A</h4>
             <form>
-              <!-- gananciaA -->
-              <div class="form-group">
-                <label for="gananciaA">Ganancia de antena A:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="gananciaA"
-                  placeholder="[dBi]"
-                  required
-                />
-              </div>
               <!-- longitudA -->
               <div class="form-group">
                 <label for="longitudA">Longitud cable A:</label>
@@ -121,7 +114,17 @@
                   required
                 />
               </div>
-
+              <!-- gananciaA -->
+              <div class="form-group">
+                <label for="gananciaA">Ganancia de antena A:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="gananciaA"
+                  placeholder="[dBi]"
+                  required
+                />
+              </div>
               <!-- Potencia -->
               <div class="form-group">
                 <label for="potenciaA">Potencia señal A:</label>
@@ -179,7 +182,7 @@
             class="btn btn-primary mt-2"
             onclick="enviarDatos()"
           >
-            Enviar Datos
+            Calcular
           </button>
           <!-- Mensaje de alerta (inicialmente oculto) -->
           <div
@@ -203,29 +206,27 @@
                 <tbody>
                   <tr>
                     <td>Ganancia de Potencia señal A</td>
-                    <td id="ptx" class="text-center">-</td>
+                    <td id="ptx" class="text-center">dBm</td>
                   </tr>
                   <tr>
                     <td>Pérdida por Atenuación en A</td>
-                    <td id="cableA" class="text-center">-</td>
+                    <td id="cableA" class="text-center">dB</td>
                   </tr>
                   <tr>
                     <td>Pérdida por Atenuación en B</td>
-                    <td id="cableB" class="text-center">-</td>
-                  </tr>
-                  <tr>
-                    <td>Ganancia de antena A</td>
-                    <td id="antena" class="text-center">-</td>
+                    <td id="cableB" class="text-center">dB</td>
                   </tr>
                   <tr>
                     <td>Atenuación en el Espacio Libre</td>
-                    <td id="espacio" class="text-center">-</td>
+                    <td id="espacio" class="text-center">dB</td>
                   </tr>
                   <tr>
-                    <td class="fw-bold">
-                      Ganancia de Antena B
-                    </td>
-                    <td id="rssi" class="text-center fw-bold">-</td>
+                    <td>Ganancia de antena A</td>
+                    <td id="antena" class="text-center">dBi</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Ganancia de Antena B</td>
+                    <td id="antenaB" class="text-center fw-bold">dBi</td>
                   </tr>
                 </tbody>
               </table>
