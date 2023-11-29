@@ -1,6 +1,5 @@
 // Lista de antenas
 const listaDeAntenas = [
-  //1 hoja
   {
     nombre: "ANT-2X2-2714",
     bandaBaja: 2.4,
@@ -22,7 +21,6 @@ const listaDeAntenas = [
     peakGain: 14,
     imagen: "./img/Antenas/ANT-2X2-5314.gif",
   },
-  //2 hoja
   {
     nombre: "ANT-2X2-5005",
     bandaBaja: 5.15,
@@ -44,7 +42,6 @@ const listaDeAntenas = [
     peakGain: 5,
     imagen: "./img/Antenas/ANT-2X2-2005.jpg",
   },
-  //3 hoja
   {
     nombre: "ANT-3X3-5712",
     bandaBaja: 4.9,
@@ -59,7 +56,6 @@ const listaDeAntenas = [
     peakGain: 10,
     imagen: "./img/Antenas/ANT-3X3-5010.jpg",
   },
-  //hoja 4
   {
     nombre: "ANT-3X3-5005",
     bandaBaja: 4.9,
@@ -74,7 +70,6 @@ const listaDeAntenas = [
     peakGain: 5,
     imagen: "./img/Antenas/ANT-3X3-2005.jpg",
   },
-  //{ nombre: '', bandaBaja: , bandaAlta: , peakGain: },
 ];
 
 // Función para seleccionar antenas
@@ -86,7 +81,6 @@ function seleccionarAntenas(banda, peakGainA) {
       banda <= antena.bandaAlta &&
       peakGainA <= antena.peakGain
   );
-
   // Devuelve el array de antenas coincidentes
   return antenasCoincidentes;
 }
@@ -173,6 +167,7 @@ function enviarDatos() {
     document.getElementById("espacio").innerHTML = `${el.toFixed(3)} dB`;
     //antenaB dBm
     document.getElementById("antenaB").innerHTML = `${resantenaB.toFixed(3)} dBi`;
+
     //Antena
     if (antenasElegidas.length > 0) {
       const contenidoAntenas = antenasElegidas
@@ -193,7 +188,9 @@ function enviarDatos() {
 
 function enviarDatos2() {
   // Limpiar resultados anteriores
-  document.getElementById("N").innerHTML = "-";
+  document.getElementById("N").innerHTML = "W";
+  document.getElementById("S").innerHTML = "W";
+  document.getElementById("SNR").innerHTML = "";
 
   // Obtener los valores de los campos y reemplazar comas por puntos
   var temperatura = document
