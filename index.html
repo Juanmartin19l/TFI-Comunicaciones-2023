@@ -35,7 +35,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="nosotros.html">Nosotros</a>
+            <a class="nav-link" href="temperatura.html">Receptor bajo temperatura</a>
           </li>
         </ul>
       </nav>
@@ -43,13 +43,13 @@
     <main>
       <div class="container pt-3">
         <h1 class="text-md-center text-sm-start">
-          Proyecto Final Comunicaciones
+          Calculadora de Ganancia en dBi para la Antena del Lado B y Recomendación de Antena Compatible de la Matriz Aruba
         </h1>
 
-        <p class="fs-3">
-          Calculadora de indicador de fuerza de la señal recibida de la antena
-          B(RSSI) y recomienda una antena de la matriz Aruba que sea compatible.
-          Considerando una antena isotrópica de 1mW.
+        <p class="fs-5 mt-3 text-justify">
+          Considerando una antena isotrópica de 1mW, se procederá al cálculo de la ganancia en decibelios (dBi) para la antena del lado B. La ganancia en dBi es un parámetro esencial para evaluar la eficiencia de la antena en la transmisión y recepción de señales.
+
+          Una vez obtenida la ganancia en dBi, se realizará una recomendación de antena compatible de la matriz Aruba que cumpla con los requisitos y especificaciones pertinentes.
         </p>
 
         <img
@@ -78,7 +78,7 @@
                 <label for="frecuencia">Frecuencia de operacion:</label>
                 <select class="form-control" id="frecuencia" required>
                   <option value="2.4">2.4 GHz</option>
-                  <option value="5">5 GHz</option>
+                  <option value="5.8">5.8 GHz</option>
                 </select>
                         
           
@@ -223,7 +223,7 @@
                   </tr>
                   <tr>
                     <td class="fw-bold">
-                      RSSI (indicador de fuerza de la señal recibida)
+                      Ganancia de Antena B
                     </td>
                     <td id="rssi" class="text-center fw-bold">-</td>
                   </tr>

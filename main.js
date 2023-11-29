@@ -190,3 +190,51 @@ function enviarDatos() {
     }
   }
 }
+
+function enviarDatos2() {
+  // Limpiar resultados anteriores
+  document.getElementById("N").innerHTML = "-";
+
+  // Obtener los valores de los campos y reemplazar comas por puntos
+  var temperatura = document
+    .getElementById("temperatura")
+    .value.trim()
+    .replace(",", ".");
+
+  var sensibilidad = document
+    .getElementById("sensibilidad")
+    .value.trim()
+    .replace(",", ".");
+
+  var norma = document
+    .getElementById("norma")
+    .value.trim()
+    .replace(",", ".");
+
+  // Expresión regular para permitir solo números, punto y coma, con máximo un punto
+  var regex = /^-?[0-9]+(\.[0-9]+)?$/;
+
+  // Verificar si algún campo contiene caracteres no permitidos
+  if (
+    !regex.test(temperatura) ||
+    !regex.test(sensibilidad)
+  ) {
+    // Mostrar mensaje de alerta si algún campo contiene caracteres no permitidos
+    document.getElementById("alerta2").style.display = "block";
+  } else {
+    // Ocultar mensaje de alerta si todos los campos están completos
+    document.getElementById("alerta2").style.display = "none";
+    const K = parseFloat(temperatura) + 273;
+    const constanteBoltzmann = 1.380649e-23;
+    const N = constanteBoltzmann * K * norma;
+    const S = Math.pow(10, (sensibilidad / 10)) / 1000;
+    const SNR = S/N;
+    //N
+    document.getElementById("N").innerHTML = `${N.toExponential(3)} W`;
+    //S
+    document.getElementById("S").innerHTML = `${S.toExponential(3)} W`;
+    //SNR
+    document.getElementById("SNR").innerHTML = `${SNR.toFixed(3)}`;
+
+  }
+}
