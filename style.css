@@ -1,17 +1,17 @@
-#imagen{
-    max-width: 75%; /* Puedes ajustar el porcentaje según tus necesidades */
+#imagen {
+    max-width: 75%;
     height: auto;
-    display: block; /* Para evitar márgenes en la parte inferior de la imagen */
-    margin: 0 auto; /* Para centrar horizontalmente la imagen */
+    display: block;
+    margin: 0 auto;
     margin-top: 4em;
     margin-bottom: 4em;
 }
 
-#imagen2{
-    max-width: 75%; /* Puedes ajustar el porcentaje según tus necesidades */
-    height: auto;
-    display: block; /* Para evitar márgenes en la parte inferior de la imagen */
-    margin: 0 auto; /* Para centrar horizontalmente la imagen */
-    margin-top: 4em;
-    margin-bottom: 4em;
+/* Consulta de medios para pantallas con un ancho máximo de 600 píxeles (ajusta según sea necesario) */
+@media only screen and (max-width: 600px) {
+    #imagen {
+        max-width: 100%; /* Hace que la imagen ocupe el ancho completo del dispositivo */
+        margin-top: 2em; /* Puedes ajustar el margen superior según tus necesidades */
+        margin-bottom: 2em; /* Puedes ajustar el margen inferior según tus necesidades */
+    }
 }
