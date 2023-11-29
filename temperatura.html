@@ -53,7 +53,12 @@
         </h1>
 
         <p class="fs-5 mt-3 text-justify">
-          El programa realizará cálculos precisos para determinar la potencia de ruido y la potencia de la señal en función de la temperatura proporcionada. El receptor puede trabajar bajo Estándares IEEE 802.11n, 802.11ac, y 802.11ax.  Además, se calculará el valor de Relación Señal-Ruido (SNR) y cuantas veces mayor tiene que ser la señal que el ruido para que el sistema funcione correctamente.
+          El programa realizará cálculos precisos para determinar la potencia de
+          ruido y la potencia de la señal en función de la temperatura
+          proporcionada. El receptor puede trabajar bajo Estándares IEEE
+          802.11n, 802.11ac, y 802.11ax. Además, se calculará el valor de
+          Relación Señal-Ruido (SNR) y cuantas veces mayor tiene que ser la
+          señal que el ruido para que el sistema funcione correctamente.
         </p>
 
         <img
@@ -97,13 +102,29 @@
                   required
                 />
               </div>
+              <!-- Botón de envío -->
+              <button
+                type="button"
+                class="btn btn-primary mt-2 w-100"
+                onclick="enviarDatos2()"
+              >
+                Calcular
+              </button>
+              <!-- Mensaje de alerta (inicialmente oculto) -->
+              <div
+                class="alert alert-danger mt-3"
+                id="alerta2"
+                style="display: none"
+              >
+                Por favor, complete todos los campos con números decimales.
+              </div>
             </form>
           </div>
           <div class="col-md-6">
             <!--Resultados-->
-            <div class="mt-3" id="resultados2">
+            <div id="resultados2">
               <h4>Desarrollo</h4>
-              <table class="table table-bordered">
+              <table class="table table-bordered mt-4">
                 <thead>
                   <tr>
                     <th>Descripción</th>
@@ -126,22 +147,6 @@
                 </tbody>
               </table>
             </div>
-          </div>
-          <!-- Botón de envío -->
-          <button
-            type="button"
-            class="btn btn-primary mt-2"
-            onclick="enviarDatos2()"
-          >
-            Enviar Datos
-          </button>
-          <!-- Mensaje de alerta (inicialmente oculto) -->
-          <div
-            class="alert alert-danger mt-3"
-            id="alerta2"
-            style="display: none"
-          >
-            Por favor, complete todos los campos con números decimales.
           </div>
         </div>
       </div>

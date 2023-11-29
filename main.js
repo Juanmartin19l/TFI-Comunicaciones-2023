@@ -126,7 +126,7 @@ function enviarDatos() {
     .getElementById("longitudB")
     .value.trim()
     .replace(",", ".");
-  var señalA = document.getElementById("señalA").value.trim().replace(",", ".");
+  var potenciaA = document.getElementById("potenciaA").value.trim().replace(",", ".");
   var sensibilidad = document
     .getElementById("sensibilidad")
     .value.trim()
@@ -144,7 +144,7 @@ function enviarDatos() {
     !regex.test(atenuacion) ||
     !regex.test(longitudA) ||
     !regex.test(longitudB) ||
-    !regex.test(señalA) ||
+    !regex.test(potenciaA) ||
     !regex.test(sensibilidad) ||
     !regex.test(margen)
   ) {
@@ -154,7 +154,7 @@ function enviarDatos() {
     // Ocultar mensaje de alerta si todos los campos están completos
     document.getElementById("alerta").style.display = "none";
 
-    const ptx = 10 * Math.log10(señalA / 1);
+    const ptx = 10 * Math.log10(potenciaA / 1);
     const aA = longitudA * atenuacion;
     const aB = longitudB * atenuacion;
     const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
