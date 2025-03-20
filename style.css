@@ -21,21 +21,9 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.card {
-  transition: transform 0.2s ease;
-}
+/* Se eliminaron las animaciones para las cards */
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.btn-primary {
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  transform: scale(1.05);
-}
+/* Se eliminaron las animaciones para los botones */
 
 table.table-hover tr:hover {
   background-color: rgba(13, 110, 253, 0.1);
