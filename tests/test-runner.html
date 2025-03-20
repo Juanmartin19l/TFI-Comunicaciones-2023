@@ -4,47 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test de Calculadora de Ganancia</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      line-height: 1.6;
-    }
+  <title>Test Runner Unificado</title>
 
-    .success {
-      color: green;
-      font-weight: bold;
-    }
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-
-    .test-result {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-    }
-
-    h1 {
-      color: #333;
-    }
-
-    #resultados {
-      margin-top: 20px;
-    }
-  </style>
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-  <h1>Test de Calculadora de Ganancia</h1>
-  <button id="run-test">Ejecutar Test</button>
-  <div id="resultados"></div>
+<body class="container">
+  <h1 class="my-4 text-center">Test Runner Unificado</h1>
 
-  <!-- Elementos del DOM necesarios para la prueba (ocultos) -->
+  <!-- Navegación con tabs de Bootstrap -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="ganancia-tab" data-bs-toggle="tab" data-bs-target="#ganancia-test"
+        type="button" role="tab" aria-controls="ganancia-test" aria-selected="true">
+        Test de Calculadora de Ganancia
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="temperatura-tab" data-bs-toggle="tab" data-bs-target="#temperatura-test"
+        type="button" role="tab" aria-controls="temperatura-test" aria-selected="false">
+        Test de Calculadora de Temperatura
+      </button>
+    </li>
+  </ul>
+
+  <!-- Contenido de las tabs -->
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="ganancia-test" role="tabpanel" aria-labelledby="ganancia-tab">
+      <h2 class="h4 m-3 ">Test de Calculadora de Ganancia</h2>
+      <button id="run-ganancia-test" class="btn btn-primary mb-3">Ejecutar Test de Ganancia</button>
+      <div id="resultados-ganancia"></div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="temperatura-test" role="tabpanel" aria-labelledby="temperatura-tab">
+    <h2 class="h4 m-3">Test de Calculadora de Temperatura</h2>
+    <button id="run-temperatura-test" class="btn btn-primary mb-3">Ejecutar Test de Temperatura</button>
+    <div id="resultados-temperatura"></div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Elementos del DOM necesarios para la prueba de ganancia (ocultos) -->
   <div style="display: none;">
     <input id="distancia">
     <select id="frecuencia">
@@ -69,11 +74,47 @@
     <div id="alerta" style="display: none;"></div>
   </div>
 
+  <!-- Elementos del DOM necesarios para la prueba de temperatura (ocultos) -->
+  <div style="display: none;">
+    <input id="temperatura">
+    <select id="norma">
+      <option value="40e6">IEEE 802.11n</option>
+      <option value="80e6">IEEE 802.11ac</option>
+      <option value="160e6">IEEE 802.11ax</option>
+    </select>
+
+    <div id="N"></div>
+    <div id="S"></div>
+    <div id="SNR"></div>
+    <div id="alerta2" style="display: none;"></div>
+  </div>
+
+  <!-- Bootstrap JavaScript Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
   <!-- Cargar el código de la aplicación -->
   <script src="../main.js"></script>
 
-  <!-- Cargar el test -->
+  <!-- Cargar los tests -->
   <script src="index.test.js"></script>
+  <script src="temperatura.test.js"></script>
+
+  <script>
+    // Inicializar los tests al cargar la página
+    window.onload = function () {
+      // Inicializar instrucciones para test de ganancia
+      inicializarInstruccionesGanancia();
+
+      // Inicializar instrucciones para test de temperatura
+      inicializarInstruccionesTemperatura();
+
+      // Asociar eventos a los botones de test
+      document.getElementById("run-ganancia-test").addEventListener("click", ejecutarTest);
+      document.getElementById("run-temperatura-test").addEventListener("click", ejecutarTestTemperatura);
+    };
+  </script>
 </body>
 
 </html>

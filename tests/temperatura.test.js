@@ -1,28 +1,28 @@
 // Test para verificar la calculadora de temperatura en temperatura.html
 
 // Configurar valores de entrada para el test
-function configurarDatosEntrada() {
+function configurarDatosEntradaTemperatura() {
   document.getElementById("temperatura").value = "25";
   document.getElementById("norma").value = "40e6"; // IEEE 802.11n
   document.getElementById("sensibilidad").value = "-80";
 }
 
 // Valores esperados para el test
-const resultadosEsperados = {
+const resultadosEsperadosTemperatura = {
   N: "1.646e-13 W",
   S: "1.000e-11 W",
   SNR: "60.763",
 };
 
 // Función para ejecutar el test
-function ejecutarTest() {
-  const resultadosTests = document.getElementById("resultados");
+function ejecutarTestTemperatura() {
+  const resultadosTests = document.getElementById("resultados-temperatura");
   resultadosTests.innerHTML =
     '<div class="test-result"><h3>Ejecutando pruebas...</h3></div>';
 
   try {
     // Configurar los datos de entrada
-    configurarDatosEntrada();
+    configurarDatosEntradaTemperatura();
 
     // Ejecutar el cálculo
     enviarDatos2();
@@ -37,13 +37,13 @@ function ejecutarTest() {
     // Comprobar cada valor
     let errores = [];
     let html =
-      '<div class="test-result"><h3>Resultados de las pruebas:</h3><ul>';
+      '<div class="test-result"><h3 class="mb-3">Resultados de las pruebas:</h3><ul class="list-group mb-3">';
 
-    for (const key in resultadosEsperados) {
-      if (resultados[key] === resultadosEsperados[key]) {
-        html += `<li class="success">✅ ${key}: correcto (${resultados[key]})</li>`;
+    for (const key in resultadosEsperadosTemperatura) {
+      if (resultados[key] === resultadosEsperadosTemperatura[key]) {
+        html += `<li class="list-group-item success">✅ ${key}: correcto (${resultados[key]})</li>`;
       } else {
-        html += `<li class="error">❌ ${key}: incorrecto. Esperado: "${resultadosEsperados[key]}", obtenido: "${resultados[key]}"</li>`;
+        html += `<li class="list-group-item error">❌ ${key}: incorrecto. Esperado: "${resultadosEsperadosTemperatura[key]}", obtenido: "${resultados[key]}"</li>`;
         errores.push(key);
       }
     }
@@ -53,9 +53,9 @@ function ejecutarTest() {
     // Mostrar resultado final
     if (errores.length === 0) {
       html +=
-        '<p class="success">✅ TODAS LAS PRUEBAS PASARON CORRECTAMENTE</p>';
+        '<div class="alert alert-success"><p class="success mb-0">✅ TODAS LAS PRUEBAS PASARON CORRECTAMENTE</p></div>';
     } else {
-      html += `<p class="error">❌ HAY ${errores.length} ERRORES EN LAS PRUEBAS</p>`;
+      html += `<div class="alert alert-danger"><p class="error mb-0">❌ HAY ${errores.length} ERRORES EN LAS PRUEBAS</p></div>`;
     }
 
     html += "</div>";
@@ -66,19 +66,26 @@ function ejecutarTest() {
   }
 }
 
+// Mostrar instrucciones iniciales
+function inicializarInstruccionesTemperatura() {
+  document.getElementById("resultados-temperatura").innerHTML = `
+    <div class="test-result">
+      <h3 class="mb-3">Instrucciones:</h3>
+      <p>Haga clic en "Ejecutar Test de Temperatura" para verificar si la calculadora funciona correctamente.</p>
+      <p>La prueba utiliza los siguientes valores de entrada:</p>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">Temperatura del receptor: 25 °C</li>
+        <li class="list-group-item">Norma: IEEE 802.11n</li>
+        <li class="list-group-item">Sensibilidad del receptor: -80 dBm</li>
+      </ul>
+    </div>
+  `;
+}
+
 // Asociar el evento de clic al botón
-document.getElementById("run-test").addEventListener("click", ejecutarTest);
+document
+  .getElementById("run-test")
+  .addEventListener("click", ejecutarTestTemperatura);
 
 // Mostrar instrucciones iniciales
-document.getElementById("resultados").innerHTML = `
-  <div class="test-result">
-    <h3>Instrucciones:</h3>
-    <p>Haga clic en "Ejecutar Test" para verificar si la calculadora funciona correctamente.</p>
-    <p>La prueba utiliza los siguientes valores de entrada:</p>
-    <ul>
-      <li>Temperatura del receptor: 25 °C</li>
-      <li>Norma: IEEE 802.11n</li>
-      <li>Sensibilidad del receptor: -80 dBm</li>
-    </ul>
-  </div>
-`;
+inicializarInstruccionesTemperatura();

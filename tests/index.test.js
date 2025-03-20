@@ -25,7 +25,7 @@ const resultadosEsperados = {
 
 // Función para ejecutar el test
 function ejecutarTest() {
-  const resultadosTests = document.getElementById("resultados");
+  const resultadosTests = document.getElementById("resultados-ganancia");
   resultadosTests.innerHTML =
     '<div class="test-result"><h3>Ejecutando pruebas...</h3></div>';
 
@@ -49,13 +49,13 @@ function ejecutarTest() {
     // Comprobar cada valor
     let errores = [];
     let html =
-      '<div class="test-result"><h3>Resultados de las pruebas:</h3><ul>';
+      '<div class="test-result"><h3 class="mb-3">Resultados de las pruebas:</h3><ul class="list-group mb-3">';
 
     for (const key in resultadosEsperados) {
       if (resultados[key] === resultadosEsperados[key]) {
-        html += `<li class="success">✅ ${key}: correcto (${resultados[key]})</li>`;
+        html += `<li class="list-group-item success">✅ ${key}: correcto (${resultados[key]})</li>`;
       } else {
-        html += `<li class="error">❌ ${key}: incorrecto. Esperado: "${resultadosEsperados[key]}", obtenido: "${resultados[key]}"</li>`;
+        html += `<li class="list-group-item error">❌ ${key}: incorrecto. Esperado: "${resultadosEsperados[key]}", obtenido: "${resultados[key]}"</li>`;
         errores.push(key);
       }
     }
@@ -66,9 +66,11 @@ function ejecutarTest() {
       antenasHTML.includes("ANT-2X2-2714") &&
       antenasHTML.includes("ANT-2X2-2314")
     ) {
-      html += '<li class="success">✅ Antenas recomendadas: correctas</li>';
+      html +=
+        '<li class="list-group-item success">✅ Antenas recomendadas: correctas</li>';
     } else {
-      html += '<li class="error">❌ Antenas recomendadas: incorrectas</li>';
+      html +=
+        '<li class="list-group-item error">❌ Antenas recomendadas: incorrectas</li>';
       errores.push("antenas");
     }
 
@@ -77,9 +79,9 @@ function ejecutarTest() {
     // Mostrar resultado final
     if (errores.length === 0) {
       html +=
-        '<p class="success">✅ TODAS LAS PRUEBAS PASARON CORRECTAMENTE</p>';
+        '<div class="alert alert-success"><p class="success mb-0">✅ TODAS LAS PRUEBAS PASARON CORRECTAMENTE</p></div>';
     } else {
-      html += `<p class="error">❌ HAY ${errores.length} ERRORES EN LAS PRUEBAS</p>`;
+      html += `<div class="alert alert-danger"><p class="error mb-0">❌ HAY ${errores.length} ERRORES EN LAS PRUEBAS</p></div>`;
     }
 
     html += "</div>";
@@ -94,21 +96,24 @@ function ejecutarTest() {
 document.getElementById("run-test").addEventListener("click", ejecutarTest);
 
 // Mostrar instrucciones iniciales
-document.getElementById("resultados").innerHTML = `
-  <div class="test-result">
-    <h3>Instrucciones:</h3>
-    <p>Haga clic en "Ejecutar Test" para verificar si la calculadora funciona correctamente.</p>
-    <p>La prueba utiliza los siguientes valores de entrada:</p>
-    <ul>
-      <li>Distancia entre antenas: 1 Km</li>
-      <li>Frecuencia: 2.4 GHz</li>
-      <li>Atenuación: 0.35 dB/m</li>
-      <li>Longitud cable A: 16 m</li>
-      <li>Ganancia antena A: 14 dBi</li>
-      <li>Potencia señal A: 63.1 mW</li>
-      <li>Longitud cable B: 18 m</li>
-      <li>Sensibilidad receptor: -80 dBm</li>
-      <li>Margen recepción: 10 dB</li>
-    </ul>
-  </div>
-`;
+function inicializarInstruccionesGanancia() {
+  document.getElementById("resultados-ganancia").innerHTML = `
+    <div class="test-result">
+      <h3 class="mb-3">Instrucciones:</h3>
+      <p>Haga clic en "Ejecutar Test de Ganancia" para verificar si la calculadora funciona correctamente.</p>
+      <p>La prueba utiliza los siguientes valores de entrada:</p>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">Distancia entre antenas: 1 Km</li>
+        <li class="list-group-item">Frecuencia: 2.4 GHz</li>
+        <li class="list-group-item">Atenuación: 0.35 dB/m</li>
+        <li class="list-group-item">Longitud cable A: 16 m</li>
+        <li class="list-group-item">Ganancia antena A: 14 dBi</li>
+        <li class="list-group-item">Potencia señal A: 63.1 mW</li>
+        <li class="list-group-item">Longitud cable B: 18 m</li>
+        <li class="list-group-item">Sensibilidad receptor: -80 dBm</li>
+        <li class="list-group-item">Margen recepción: 10 dB</li>
+      </ul>
+    </div>
+  `;
+}
+inicializarInstruccionesGanancia();
