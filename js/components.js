@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document
           .getElementById("nav-temperatura")
           .classList.add("active", "fw-bold");
+      } else if (
+        currentPage === "tests/test-runner.html" ||
+        currentPage.includes("test-runner")
+      ) {
+        document.getElementById("nav-tests").classList.add("active", "fw-bold");
       }
     });
 

@@ -2,52 +2,136 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Runner Unificado</title>
+  <title>Test Runner - TFI Comunicaciones</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
-<body class="container">
-  <h1 class="my-4 text-center">Test Runner Unificado</h1>
+<body class="bg-light m-0">
+  <nav class="navbar navbar-expand navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="../img/logoUTN.webp" alt="Logo de la facultad" height="40" class="me-4" />
+        <span class="fw-bold">Comunicaciones</span>
+      </a>
 
-  <!-- Navegación con tabs de Bootstrap -->
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="ganancia-tab" data-bs-toggle="tab" data-bs-target="#ganancia-test"
-        type="button" role="tab" aria-controls="ganancia-test" aria-selected="true">
-        Test de Calculadora de Ganancia
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="temperatura-tab" data-bs-toggle="tab" data-bs-target="#temperatura-test"
-        type="button" role="tab" aria-controls="temperatura-test" aria-selected="false">
-        Test de Calculadora de Temperatura
-      </button>
-    </li>
-  </ul>
-
-  <!-- Contenido de las tabs -->
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="ganancia-test" role="tabpanel" aria-labelledby="ganancia-tab">
-      <h2 class="h4 m-3 ">Test de Calculadora de Ganancia</h2>
-      <button id="run-ganancia-test" class="btn btn-primary mb-3">Ejecutar Test de Ganancia</button>
-      <div id="resultados-ganancia"></div>
+      <!-- Enlaces de navegación -->
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" id="nav-index" href="../index.html">
+            <i class="fas fa-broadcast-tower me-1"></i>Ganancia para Antena B
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-temperatura" href="../temperatura.html">
+            <i class="fas fa-temperature-low me-1"></i>Receptor bajo temperatura
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fw-bold" id="nav-tests" href="tests/test-runner.html">
+            <i class="fas fa-vial me-1"></i>Tests
+          </a>
+        </li>
+      </ul>
     </div>
-  </div>
-  <div class="tab-pane fade" id="temperatura-test" role="tabpanel" aria-labelledby="temperatura-tab">
-    <h2 class="h4 m-3">Test de Calculadora de Temperatura</h2>
-    <button id="run-temperatura-test" class="btn btn-primary mb-3">Ejecutar Test de Temperatura</button>
-    <div id="resultados-temperatura"></div>
-  </div>
-  </div>
-  </div>
+  </nav>
+
+  <main>
+    <div class="container py-4">
+      <div class="card shadow-sm mb-4 border-0 rounded-3">
+        <div class="card-body">
+          <h1 class="card-title text-center text-primary mb-3">
+            Test Runner Unificado
+          </h1>
+          <h5 class="text-center text-muted mb-4">
+            Verificación automática de las calculadoras de ganancia y temperatura
+          </h5>
+
+          <p class="lead text-muted mb-4">
+            Este módulo permite ejecutar tests automáticos para verificar el correcto funcionamiento de las calculadoras
+            de ganancia
+            y temperatura. Los tests comprueban que los resultados de los cálculos sean correctos para entradas
+            específicas.
+          </p>
+        </div>
+      </div>
+
+      <div class="card shadow-sm border-0 rounded-3 mb-4">
+        <div class="card-header bg-primary text-white py-3">
+          <h3 class="card-title mb-0"><i class="fas fa-vial me-2"></i>Tests Disponibles</h3>
+        </div>
+        <div class="card-body">
+          <!-- Test de Ganancia -->
+          <div class="mb-4">
+            <h4 class="mb-3">
+              <i class="fas fa-broadcast-tower me-2"></i>Test de Calculadora de Ganancia
+            </h4>
+            <button id="run-ganancia-test" class="btn btn-primary mb-3">
+              <i class="fas fa-play-circle me-2"></i>Ejecutar Test de Ganancia
+            </button>
+            <div id="resultados-ganancia"></div>
+          </div>
+
+          <hr class="my-4">
+
+          <!-- Test de Temperatura -->
+          <div>
+            <h4 class="mb-3">
+              <i class="fas fa-temperature-low me-2"></i>Test de Calculadora de Temperatura
+            </h4>
+            <button id="run-temperatura-test" class="btn btn-primary mb-3">
+              <i class="fas fa-play-circle me-2"></i>Ejecutar Test de Temperatura
+            </button>
+            <div id="resultados-temperatura"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-5 text-center text-md-start mb-3 mb-md-0">
+          <img src="../img/logoUTN.webp" alt="Logo UTN" height="55" class="me-3">
+          <div class="d-inline-block align-middle">
+            <span class="fw-bold d-block">Universidad Tecnológica Nacional</span>
+            <span class="small">Facultad Regional Tucumán</span>
+          </div>
+        </div>
+        <div class="col-md-7 text-center text-md-end">
+          <p class="mb-1">
+            <i class="fas fa-code me-2"></i>Proyecto Final Comunicaciones - 2023 - 3K1
+          </p>
+          <p class="mb-2">
+            <i class="fas fa-user me-2"></i>Juan Martín Lavalle - 53293
+          </p>
+          <hr class="d-md-none my-2 bg-secondary opacity-50">
+          <div class="social-links mt-2">
+            <a href="https://www.linkedin.com/in/juan-mart%C3%ADn-lavalle/" target="_blank"
+              class="text-decoration-none text-white me-3 social-icon" title="LinkedIn">
+              <i class="fab fa-linkedin-in fa-lg"></i>
+            </a>
+            <a href="https://github.com/Juanmartin19l" target="_blank"
+              class="text-decoration-none text-white social-icon" title="GitHub">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Elementos del DOM necesarios para la prueba de ganancia (ocultos) -->
   <div style="display: none;">
@@ -89,31 +173,49 @@
     <div id="alerta2" style="display: none;"></div>
   </div>
 
-  <!-- Bootstrap JavaScript Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
     crossorigin="anonymous"></script>
 
-  <!-- Cargar el código de la aplicación -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+
+  <!-- Cargar componentes y lógica principal primero -->
+  <script>
+    // Configurar la ruta base para los componentes
+    window.componentsPath = '../components/';
+  </script>
   <script src="../main.js"></script>
 
-  <!-- Cargar los tests -->
+  <!-- Cargar los tests después de que todo esté listo -->
   <script src="index.test.js"></script>
   <script src="temperatura.test.js"></script>
 
   <script>
-    // Inicializar los tests al cargar la página
-    window.onload = function () {
+    document.addEventListener('DOMContentLoaded', function () {
       // Inicializar instrucciones para test de ganancia
-      inicializarInstruccionesGanancia();
+      if (typeof inicializarInstruccionesGanancia === 'function') {
+        inicializarInstruccionesGanancia();
+      }
 
       // Inicializar instrucciones para test de temperatura
-      inicializarInstruccionesTemperatura();
+      if (typeof inicializarInstruccionesTemperatura === 'function') {
+        inicializarInstruccionesTemperatura();
+      }
 
       // Asociar eventos a los botones de test
-      document.getElementById("run-ganancia-test").addEventListener("click", ejecutarTest);
-      document.getElementById("run-temperatura-test").addEventListener("click", ejecutarTestTemperatura);
-    };
+      const btnGanancia = document.getElementById("run-ganancia-test");
+      if (btnGanancia) {
+        btnGanancia.addEventListener("click", ejecutarTest);
+      }
+
+      const btnTemperatura = document.getElementById("run-temperatura-test");
+      if (btnTemperatura) {
+        btnTemperatura.addEventListener("click", ejecutarTestTemperatura);
+      }
+    });
   </script>
 </body>
 

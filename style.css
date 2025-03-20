@@ -45,3 +45,33 @@ table.table-hover tr:hover {
   transform: translateY(-3px);
   color: #007bff !important;
 }
+
+.success {
+  color: green;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.test-result {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+#resultados {
+  margin-top: 20px;
+}
+
+/* Estilos para los contenedores de test */
+.test-container {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-top: 15px;
+  background-color: #f9f9f9;
+}
