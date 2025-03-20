@@ -1,17 +1,47 @@
 #imagen {
-    max-width: 75%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    margin-top: 4em;
-    margin-bottom: 4em;
+  max-width: 75%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-top: 4em;
+  margin-bottom: 4em;
 }
 
 /* Consulta de medios para pantallas con un ancho máximo de 600 píxeles (ajusta según sea necesario) */
 @media only screen and (max-width: 600px) {
-    #imagen {
-        max-width: 100%; /* Hace que la imagen ocupe el ancho completo del dispositivo */
-        margin-top: 2em; /* Puedes ajustar el margen superior según tus necesidades */
-        margin-bottom: 2em; /* Puedes ajustar el margen inferior según tus necesidades */
-    }
+  #imagen {
+    max-width: 100%; /* Hace que la imagen ocupe el ancho completo del dispositivo */
+    margin-top: 2em; /* Puedes ajustar el margen superior según tus necesidades */
+    margin-bottom: 2em; /* Puedes ajustar el margen inferior según tus necesidades */
+  }
+}
+
+/* Estilos personalizados */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-primary {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+table.table-hover tr:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.input-group-text {
+  min-width: 50px;
+  justify-content: center;
 }
