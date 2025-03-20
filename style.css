@@ -33,3 +33,15 @@ table.table-hover tr:hover {
   min-width: 50px;
   justify-content: center;
 }
+
+/* Estilos para los iconos sociales en el footer */
+.social-icon {
+  transition: transform 0.3s, color 0.3s;
+  display: inline-block;
+  padding: 5px;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: #007bff !important;
+}
