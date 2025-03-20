@@ -82,10 +82,8 @@ function inicializarInstruccionesTemperatura() {
   `;
 }
 
-// Asociar el evento de clic al botón
-document
-  .getElementById("run-test")
-  .addEventListener("click", ejecutarTestTemperatura);
+// Eliminar el event listener duplicado (línea que causa error)
+// document.getElementById("run-test").addEventListener("click", ejecutarTestTemperatura);
 
 // Mostrar instrucciones iniciales
 inicializarInstruccionesTemperatura();

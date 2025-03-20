@@ -92,9 +92,6 @@ function ejecutarTest() {
   }
 }
 
-// Asociar el evento de clic al botón
-document.getElementById("run-test").addEventListener("click", ejecutarTest);
-
 // Mostrar instrucciones iniciales
 function inicializarInstruccionesGanancia() {
   document.getElementById("resultados-ganancia").innerHTML = `
@@ -116,4 +113,3 @@ function inicializarInstruccionesGanancia() {
     </div>
   `;
 }
-inicializarInstruccionesGanancia();
