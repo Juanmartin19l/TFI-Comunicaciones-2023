@@ -1,176 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>TFI Comunicaciones</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-      crossorigin="anonymous"
-    />
-  </head>
 
-  <body>
-    <header>
-      <!-- place navbar here -->
-      <nav class="navbar navbar-expand navbar-light bg-light">
-        <!-- Logo de la empresa -->
-        <a class="navbar-brand" href="#">
-          <img src="./img/logoUTN.png" alt="Logo de la facultad" height="40" />
-        </a>
+<head>
+  <title>TFI Comunicaciones</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
 
-        <!-- Enlaces de navegación -->
-        <ul class="nav navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Ganancia para Antena B</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              href="temperatura.html"
-              aria-current="page"
-              >Receptor bajo temperatura<span class="visually-hidden"
-                >(current)</span
-              ></a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div class="container pt-3">
-        <h1 class="text-md-center text-sm-start">
-          Calculadora de Potencia de Ruido, Potencia de Señal
-          y relacion Señal Ruido.
-        </h1>
+<body class="bg-light">
+  <header id="header-placeholder">
+    <!-- El header se cargará aquí -->
+  </header>
+  <main>
+    <div class="container py-4">
+      <div class="card shadow-sm mb-4 border-0 rounded-3">
+        <div class="card-body">
+          <h1 class="card-title text-center text-primary mb-3">
+            Calculadora de Potencia de Ruido, Potencia de Señal y Relación Señal Ruido
+          </h1>
 
-        <p class="fs-5 text-justify pt-4">
-          El programa realizará cálculos para determinar la potencia de
-          ruido y la potencia de la señal en función de la temperatura
-          proporcionada. El receptor puede trabajar bajo Estándares IEEE
-          802.11n, 802.11ac, y 802.11ax. Además, se calculará el valor de
-          Relación Señal-Ruido (SNR) y cuantas veces mayor tiene que ser la
-          señal que el ruido para que el sistema funcione correctamente.
-        </p>
+          <p class="lead text-muted mb-4">
+            El programa realizará cálculos para determinar la potencia de ruido y la potencia de la señal en función de
+            la temperatura proporcionada. El receptor puede trabajar bajo Estándares IEEE 802.11n, 802.11ac, y 802.11ax.
+            Además, se calculará el valor de Relación Señal-Ruido (SNR) y cuantas veces mayor tiene que ser la señal que
+            el ruido para que el sistema funcione correctamente.
+          </p>
 
-        <img
-          src="./img/imagen proyecto 2.png"
-          class="p-1 bg-info rounded"
-          id="imagen"
-          alt="Imagen del proyecto"
-        />
-        <div class="row mt-3">
-          <div class="col-md-6">
-            <h4>Datos</h4>
-            <form>
-              <!-- temperatura  -->
-              <div class="form-group">
-                <label for="temperatura">Temperatura del receptor:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="temperatura"
-                  placeholder="[°C]"
-                  required
-                />
-              </div>
-              <!-- norma -->
-              <div class="form-group">
-                <label for="norma">Norma:</label>
-                <select class="form-control" id="norma" required>
-                  <option value="40e6">IEEE 802.11n</option>
-                  <option value="80e6">IEEE 802.11ac</option>
-                  <option value="160e6">IEEE 802.11ax</option>
-                </select>
-              </div>
-              <!-- sensibilidad -->
-              <div class="form-group">
-                <label for="sensibilidad">Sensibilidad del receptor:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="sensibilidad"
-                  placeholder="[dBm]"
-                  required
-                />
-              </div>
-              <!-- Botón de envío -->
-              <button
-                type="button"
-                class="btn btn-primary mt-2 w-100"
-                onclick="enviarDatos2()"
-              >
-                Calcular
-              </button>
-              <!-- Mensaje de alerta (inicialmente oculto) -->
-              <div
-                class="alert alert-danger mt-3"
-                id="alerta2"
-                style="display: none"
-              >
-                Por favor, complete todos los campos con números decimales.
-              </div>
-            </form>
+          <div class="text-center mb-4">
+            <img src="./img/imagen proyecto 2.webp" class="img-fluid" id="Imagen proyecto" alt="Imagen del proyecto"
+              style="max-height: 300px;" />
           </div>
-          <div class="col-md-6">
-            <!--Resultados-->
-            <div id="resultados2">
-              <h4>Desarrollo</h4>
-              <table class="table table-bordered mt-4">
-                <thead>
-                  <tr>
-                    <th>Descripción</th>
-                    <th class="text-center">Resultado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Potencia de ruido</td>
-                    <td id="N" class="text-center">W</td>
-                  </tr>
-                  <tr>
-                    <td>Potencia de señal</td>
-                    <td id="S" class="text-center">W</td>
-                  </tr>
-                  <tr>
-                    <td>Relacion señal ruido SNR</td>
-                    <td id="SNR" class="text-center"></td>
-                  </tr>
-                </tbody>
-              </table>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 border-0 rounded-3">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="card-title mb-0"><i class="fas fa-edit me-2"></i>Datos de Entrada</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <!-- temperatura  -->
+                <div class="mb-3">
+                  <label for="temperatura" class="form-label">Temperatura del receptor:</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="temperatura" placeholder="Ingrese valor" required />
+                    <span class="input-group-text">°C</span>
+                  </div>
+                </div>
+                <!-- norma -->
+                <div class="mb-3">
+                  <label for="norma" class="form-label">Norma:</label>
+                  <select class="form-select" id="norma" required>
+                    <option value="40e6">IEEE 802.11n</option>
+                    <option value="80e6">IEEE 802.11ac</option>
+                    <option value="160e6">IEEE 802.11ax</option>
+                  </select>
+                </div>
+                <!-- sensibilidad -->
+                <div class="mb-3">
+                  <label for="sensibilidad" class="form-label">Sensibilidad del receptor:</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="sensibilidad" placeholder="Ingrese valor" required />
+                    <span class="input-group-text">dBm</span>
+                  </div>
+                </div>
+                <!-- Botón de envío -->
+                <div class="d-grid gap-2 mt-4">
+                  <button type="button" class="btn btn-primary btn-lg" onclick="enviarDatos2()">
+                    <i class="fas fa-calculator me-2"></i>Calcular
+                  </button>
+                </div>
+                <!-- Mensaje de alerta (inicialmente oculto) -->
+                <div class="alert alert-danger mt-3" id="alerta2" style="display: none">
+                  <i class="fas fa-exclamation-triangle me-2"></i>
+                  Por favor, complete todos los campos con números decimales.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 border-0 rounded-3">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="card-title mb-0"><i class="fas fa-clipboard-list me-2"></i>Resultados</h3>
+            </div>
+            <div class="card-body">
+              <div id="resultados2">
+                <table class="table table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Descripción</th>
+                      <th class="text-center">Resultado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><i class="fas fa-bolt me-2"></i>Potencia de ruido</td>
+                      <td id="N" class="text-center">W</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fas fa-signal me-2"></i>Potencia de señal</td>
+                      <td id="S" class="text-center">W</td>
+                    </tr>
+                    <tr class="table-primary fw-bold">
+                      <td><i class="fas fa-percentage me-2"></i>Relación señal ruido (SNR)</td>
+                      <td id="SNR" class="text-center"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
-    <footer class="bg-dark text-light py-3 mt-5">
-      <div class="container text-center">
-        <p>
-          Proyecto Final Comunicaciones - 2023 - 3K1 - Juan Martín Lavalle -
-          53293
-        </p>
-      </div>
-    </footer>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
+    </div>
+  </main>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="main.js"></script>
-  </body>
+  <footer id="footer-placeholder">
+    <!-- El footer se cargará aquí -->
+  </footer>
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+  <script src="js/components.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>

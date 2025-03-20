@@ -5,70 +5,70 @@ const listaDeAntenas = [
     bandaBaja: 2.4,
     bandaAlta: 2.483,
     peakGain: 14,
-    imagen: "./img/Antenas/ANT-2X2-2714.jpg",
+    imagen: "./img/Antenas/ANT-2X2-2714.webp",
   },
   {
     nombre: "ANT-2X2-5010",
     bandaBaja: 5.15,
     bandaAlta: 5.875,
     peakGain: 10,
-    imagen: "./img/Antenas/ANT-2X2-5010.jpg",
+    imagen: "./img/Antenas/ANT-2X2-5010.webp",
   },
   {
     nombre: "ANT-2X2-5314",
     bandaBaja: 4.9,
     bandaAlta: 5.875,
     peakGain: 14,
-    imagen: "./img/Antenas/ANT-2X2-5314.gif",
+    imagen: "./img/Antenas/ANT-2X2-5314.webp",
   },
   {
     nombre: "ANT-2X2-5005",
     bandaBaja: 5.15,
     bandaAlta: 5.875,
     peakGain: 5,
-    imagen: "./img/Antenas/ANT-2X2-5005.jpg",
+    imagen: "./img/Antenas/ANT-2X2-5005.webp",
   },
   {
     nombre: "ANT-2X2-2314",
     bandaBaja: 2.4,
     bandaAlta: 2.5,
     peakGain: 14,
-    imagen: "./img/Antenas/ANT-2X2-2314.gif",
+    imagen: "./img/Antenas/ANT-2X2-2314.webp",
   },
   {
     nombre: "ANT-2X2-2005",
     bandaBaja: 2.4,
     bandaAlta: 2.5,
     peakGain: 5,
-    imagen: "./img/Antenas/ANT-2X2-2005.jpg",
+    imagen: "./img/Antenas/ANT-2X2-2005.webp",
   },
   {
     nombre: "ANT-3X3-5712",
     bandaBaja: 4.9,
     bandaAlta: 6.0,
     peakGain: 11.5,
-    imagen: "./img/Antenas/ANT-3X3-5712.jpg",
+    imagen: "./img/Antenas/ANT-3X3-5712.webp",
   },
   {
     nombre: "ANT-3X3-5010",
     bandaBaja: 4.9,
     bandaAlta: 5.875,
     peakGain: 10,
-    imagen: "./img/Antenas/ANT-3X3-5010.jpg",
+    imagen: "./img/Antenas/ANT-3X3-5010.webp",
   },
   {
     nombre: "ANT-3X3-5005",
     bandaBaja: 4.9,
     bandaAlta: 5.875,
     peakGain: 5,
-    imagen: "./img/Antenas/ANT-3X3-5005.jpg",
+    imagen: "./img/Antenas/ANT-3X3-5005.webp",
   },
   {
     nombre: "ANT-3X3-2005",
     bandaBaja: 2.4,
     bandaAlta: 2.5,
     peakGain: 5,
-    imagen: "./img/Antenas/ANT-3X3-2005.jpg",
+    imagen: "./img/Antenas/ANT-3X3-2005.webp",
   },
 ];
 
@@ -120,7 +120,10 @@ function enviarDatos() {
     .getElementById("longitudB")
     .value.trim()
     .replace(",", ".");
-  var potenciaA = document.getElementById("potenciaA").value.trim().replace(",", ".");
+  var potenciaA = document
+    .getElementById("potenciaA")
+    .value.trim()
+    .replace(",", ".");
   var sensibilidad = document
     .getElementById("sensibilidad")
     .value.trim()
@@ -152,7 +155,14 @@ function enviarDatos() {
     const aA = longitudA * atenuacion;
     const aB = longitudB * atenuacion;
     const el = 92.44 + 20 * Math.log10(distancia) + 20 * Math.log10(frecuencia);
-    const resantenaB = parseFloat(sensibilidad) + parseFloat(margen) - ptx + aA + aB - gananciaA + el;
+    const resantenaB =
+      parseFloat(sensibilidad) +
+      parseFloat(margen) -
+      ptx +
+      aA +
+      aB -
+      gananciaA +
+      el;
     const antenasElegidas = seleccionarAntenas(frecuencia, resantenaB);
 
     //Ptx dBm
@@ -166,7 +176,9 @@ function enviarDatos() {
     //Atenuación en el Espacio Libre dB
     document.getElementById("espacio").innerHTML = `${el.toFixed(3)} dB`;
     //antenaB dBm
-    document.getElementById("antenaB").innerHTML = `${resantenaB.toFixed(3)} dBi`;
+    document.getElementById("antenaB").innerHTML = `${resantenaB.toFixed(
+      3
+    )} dBi`;
 
     //Antena
     if (antenasElegidas.length > 0) {
@@ -203,19 +215,13 @@ function enviarDatos2() {
     .value.trim()
     .replace(",", ".");
 
-  var norma = document
-    .getElementById("norma")
-    .value.trim()
-    .replace(",", ".");
+  var norma = document.getElementById("norma").value.trim().replace(",", ".");
 
   // Expresión regular para permitir solo números, punto y coma, con máximo un punto
   var regex = /^-?[0-9]+(\.[0-9]+)?$/;
 
   // Verificar si algún campo contiene caracteres no permitidos
-  if (
-    !regex.test(temperatura) ||
-    !regex.test(sensibilidad)
-  ) {
+  if (!regex.test(temperatura) || !regex.test(sensibilidad)) {
     // Mostrar mensaje de alerta si algún campo contiene caracteres no permitidos
     document.getElementById("alerta2").style.display = "block";
   } else {
@@ -224,14 +230,13 @@ function enviarDatos2() {
     const K = parseFloat(temperatura) + 273;
     const constanteBoltzmann = 1.380649e-23;
     const N = constanteBoltzmann * K * norma;
-    const S = Math.pow(10, (sensibilidad / 10)) / 1000;
-    const SNR = S/N;
+    const S = Math.pow(10, sensibilidad / 10) / 1000;
+    const SNR = S / N;
     //N
     document.getElementById("N").innerHTML = `${N.toExponential(3)} W`;
     //S
     document.getElementById("S").innerHTML = `${S.toExponential(3)} W`;
     //SNR
     document.getElementById("SNR").innerHTML = `${SNR.toFixed(3)}`;
-
   }
 }
