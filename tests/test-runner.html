@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test de Calculadora de Ganancia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .test-result {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #resultados {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Test de Calculadora de Ganancia</h1>
+  <button id="run-test">Ejecutar Test</button>
+  <div id="resultados"></div>
+
+  <!-- Elementos del DOM necesarios para la prueba (ocultos) -->
+  <div style="display: none;">
+    <input id="distancia">
+    <select id="frecuencia">
+      <option value="2.4">2.4 GHz</option>
+      <option value="5.8">5.8 GHz</option>
+    </select>
+    <input id="atenuacion">
+    <input id="longitudA">
+    <input id="gananciaA">
+    <input id="potenciaA">
+    <input id="longitudB">
+    <input id="sensibilidad">
+    <input id="margen">
+
+    <div id="ptx"></div>
+    <div id="cableA"></div>
+    <div id="cableB"></div>
+    <div id="espacio"></div>
+    <div id="antena"></div>
+    <div id="antenaB"></div>
+    <div id="tipoAntena"></div>
+    <div id="alerta" style="display: none;"></div>
+  </div>
+
+  <!-- Cargar el código de la aplicación -->
+  <script src="../main.js"></script>
+
+  <!-- Cargar el test -->
+  <script src="index.test.js"></script>
+</body>
+
+</html>
